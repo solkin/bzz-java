@@ -7,7 +7,7 @@ Based on huffman algorithm file compressor/decompressor
 `-x <archive> <extracted>` - extract archive from file `archive` to file `extracted`.
 
 ### Archive file format
-`16-bit big endian` - archive version (for now if `0x01`)
+`16-bit big endian` - archive version (for now is `0x01`)
 
 `32-bit big endian` - dictionary size
 
