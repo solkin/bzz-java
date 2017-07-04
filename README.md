@@ -1,4 +1,4 @@
-## Huffman Java
+## Huffman Java [![Build Status](https://travis-ci.org/solkin/huffman-java.svg?branch=master)](https://travis-ci.org/solkin/huffman-java)
 Based on huffman algorithm file compressor/decompressor
 
 ### Command line options
