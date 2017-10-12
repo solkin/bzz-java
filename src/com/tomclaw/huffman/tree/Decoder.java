@@ -1,4 +1,4 @@
-package com.tomclaw.huffman.one;
+package com.tomclaw.huffman.tree;
 
 import com.tomclaw.huffman.BitInputStream;
 

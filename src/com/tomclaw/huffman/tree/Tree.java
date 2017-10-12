@@ -1,4 +1,4 @@
-package com.tomclaw.huffman.one;
+package com.tomclaw.huffman.tree;
 
 import java.util.ArrayList;
 import java.util.Collection;

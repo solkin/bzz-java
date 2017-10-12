@@ -1,4 +1,4 @@
-package com.tomclaw.huffman.one;
+package com.tomclaw.huffman.tree;
 
 /**
  * Created by solkin on 08.06.17.
@@ -82,7 +82,7 @@ class TreeItem implements Comparable<TreeItem> {
                 "value=" + value +
                 ", frequency=" + frequency +
                 ", zero=" + zero +
-                ", one=" + one +
+                ", tree=" + one +
                 '}';
     }
 }

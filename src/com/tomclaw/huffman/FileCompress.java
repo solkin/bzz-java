@@ -1,6 +1,6 @@
 package com.tomclaw.huffman;
 
-import com.tomclaw.huffman.one.Encoder;
+import com.tomclaw.huffman.tree.Encoder;
 
 import java.io.File;
 import java.io.IOException;

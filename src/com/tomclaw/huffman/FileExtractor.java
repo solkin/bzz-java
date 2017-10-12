@@ -1,11 +1,9 @@
 package com.tomclaw.huffman;
 
-import com.tomclaw.huffman.one.Decoder;
-import com.tomclaw.huffman.one.Encoder;
+import com.tomclaw.huffman.tree.Decoder;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Created by solkin on 09.06.17.
