@@ -5,6 +5,7 @@ import com.tomclaw.huffman.BitInputStream;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.tomclaw.huffman.StreamHelper.closeStream;
@@ -74,7 +75,7 @@ public class Decoder {
         int version = dataStream.readShort();
         switch (version) {
             case VERSION:
-                List<TreeItem> leafs = new ArrayList<>();
+                List<TreeItem> leafs = new LinkedList<>();
                 int leafsCount = dataStream.readInt();
                 for (int c = 0; c < leafsCount; c++) {
                     int value = dataStream.readByte();

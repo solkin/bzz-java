@@ -1,9 +1,6 @@
 package com.tomclaw.huffman.tree;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by solkin on 08.06.17.
@@ -27,14 +24,14 @@ public class Tree {
     }
 
     public static Tree create(Collection<TreeItem> leafs) {
-        List<TreeItem> items = new ArrayList<>(leafs);
+        LinkedList<TreeItem> items = new LinkedList<>(leafs);
         do {
             Collections.sort(items);
-            TreeItem zero = items.remove(items.size() - 1);
-            TreeItem one = items.remove(items.size() - 1);
+            TreeItem zero = items.removeLast();
+            TreeItem one = items.removeLast();
             TreeItem item = new TreeItem(zero.getFrequency() + one.getFrequency(), zero, one);
             items.add(item);
         } while (items.size() > 1);
-        return new Tree(items.get(0), leafs);
+        return new Tree(items.getFirst(), leafs);
     }
 }

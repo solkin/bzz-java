@@ -99,7 +99,7 @@ public class Encoder {
                 }
             }
 
-            List<TreeItem> items = new ArrayList<>();
+            List<TreeItem> items = new LinkedList<>();
             for (int c = 0; c < bytes.length; c++) {
                 int frequency = bytes[c];
                 if (frequency > 0) {
