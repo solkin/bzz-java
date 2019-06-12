@@ -36,7 +36,7 @@ public class Encoder {
             long fileSize = inputFile.length();
             long time = System.currentTimeMillis();
             encode(tree, inputStream, outputStream, fileSize);
-            System.out.println("encode: " + (System.currentTimeMillis() - time) + " ms.");
+            System.out.println("compress: " + (System.currentTimeMillis() - time) + " ms.");
         } finally {
             closeStream(inputStream, outputStream);
         }
@@ -70,12 +70,12 @@ public class Encoder {
             bufferedStream = new BufferedOutputStream(outputStream, BUFFER_SIZE);
             bitStream = new BitOutputStream(bufferedStream);
 
-            Map<Integer, int[]> dictionary = flatTree(tree);
+            int[][] dictionary = flatTree(tree);
             int read;
             while ((read = inputStream.read(buffer)) != -1) {
-                for (int c = 0; c < read; c++) {
-                    int b = buffer[c] - Byte.MIN_VALUE;
-                    int[] path = dictionary.get(b);
+                for (int c = read; c > 0; c--) {
+                    int b = buffer[read - c] - Byte.MIN_VALUE;
+                    int[] path = dictionary[b];
                     for (int i = path.length - 1; i >= 0; i--) {
                         bitStream.writeBit(path[i]);
                     }
@@ -113,11 +113,11 @@ public class Encoder {
         }
     }
 
-    private Map<Integer, int[]> flatTree(Tree tree) {
+    private int[][] flatTree(Tree tree) {
         Collection<TreeItem> leafs = tree.getLeafs();
         TreeItem rootItem = tree.getRootItem();
 
-        Map<Integer, int[]> dictionary = new HashMap<>();
+        int[][] dictionary = new int[Byte.MAX_VALUE - Byte.MIN_VALUE + 1][];
         for (TreeItem item : leafs) {
 
             int length = 0;
@@ -133,7 +133,7 @@ public class Encoder {
                 path[c++] = parent.getBit();
             } while ((parent = parent.getParent()) != rootItem);
 
-            dictionary.put(item.getValue(), path);
+            dictionary[item.getValue()] = path;
         }
         return dictionary;
     }
