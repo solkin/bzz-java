@@ -3,8 +3,6 @@ package com.tomclaw.huffman.tree;
 import com.tomclaw.huffman.BitInputStream;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +13,8 @@ import static com.tomclaw.huffman.StreamHelper.closeStream;
  */
 public class Decoder {
 
-    private static final int VERSION = 1;
+    private static final int VERSION_1 = 1;
+    private static final int VERSION_2 = 2;
 
     private final File inputFile;
     private final File outputFile;
@@ -45,9 +44,8 @@ public class Decoder {
         try {
             dataInput = new DataInputStream(inputStream);
             bitStream = new BitInputStream(dataInput);
-            Collection<TreeItem> leafs = readDictionary(dataInput);
+            Tree tree = readDictionary(dataInput);
             long fileSize = readFileSize(dataInput);
-            Tree tree = Tree.create(leafs);
             TreeItem rootItem = tree.getRootItem();
             TreeItem item = rootItem;
             int read;
@@ -71,10 +69,10 @@ public class Decoder {
         }
     }
 
-    private Collection<TreeItem> readDictionary(DataInputStream dataStream) throws IOException {
+    private Tree readDictionary(DataInputStream dataStream) throws IOException {
         int version = dataStream.readShort();
         switch (version) {
-            case VERSION:
+            case VERSION_1:
                 List<TreeItem> leafs = new LinkedList<>();
                 int leafsCount = dataStream.readInt();
                 for (int c = 0; c < leafsCount; c++) {
@@ -82,7 +80,9 @@ public class Decoder {
                     int frequency = dataStream.readInt();
                     leafs.add(new TreeItem(value, frequency));
                 }
-                return leafs;
+                return Tree.create(leafs);
+            case VERSION_2:
+                return null;
             default:
                 throw new UnsupportedEncodingException("Version " + version + " is not supported!");
         }

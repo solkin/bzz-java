@@ -12,7 +12,8 @@ import static com.tomclaw.huffman.StreamHelper.closeStream;
  */
 public class Encoder {
 
-    private static final int VERSION = 1;
+    private static final int VERSION_1 = 1;
+    private static final int VERSION_2 = 2;
 
     private final File inputFile;
     private final File outputFile;
@@ -42,14 +43,33 @@ public class Encoder {
         }
     }
 
-    private void writeDictionary(Collection<TreeItem> leafs, DataOutputStream dataStream) throws IOException {
-        dataStream.writeShort(VERSION);
-        dataStream.writeInt(leafs.size());
-        for (TreeItem leaf : leafs) {
-            dataStream.writeByte(leaf.getValue());
-            dataStream.writeInt(leaf.getFrequency());
+    private void writeDictionary(int[][] dictionary, int count, DataOutputStream dataStream) throws IOException {
+        dataStream.writeShort(VERSION_2);
+        dataStream.writeByte(count);
+        for (int c = 0; c < dictionary.length; c++) {
+            if (dictionary[c] != null && dictionary[c].length > 0) {
+                dataStream.writeByte(c);
+                dataStream.writeByte(dictionary[c].length);
+            }
         }
-        dataStream.flush();
+        ByteArrayOutputStream baos = null;
+        BitOutputStream bitStream = null;
+        try {
+            baos = new ByteArrayOutputStream();
+            bitStream = new BitOutputStream(baos);
+            for (int[] path : dictionary) {
+                if (path != null) {
+                    for (int value : path) {
+                        bitStream.writeBit(value);
+                    }
+                }
+            }
+            bitStream.flush();
+            dataStream.write(baos.toByteArray());
+        } finally {
+            closeStream(bitStream);
+            closeStream(baos);
+        }
     }
 
     private void writeFileSize(long fileSize, DataOutputStream dataStream) throws IOException {
@@ -62,15 +82,16 @@ public class Encoder {
         BitOutputStream bitStream = null;
         BufferedOutputStream bufferedStream = null;
         try {
+            int[][] dictionary = flatTree(tree);
+
             dataStream = new DataOutputStream(outputStream);
-            writeDictionary(tree.getLeafs(), dataStream);
+            writeDictionary(dictionary, tree.getLeafs().size(), dataStream);
 
             writeFileSize(fileSize, dataStream);
 
             bufferedStream = new BufferedOutputStream(outputStream, BUFFER_SIZE);
             bitStream = new BitOutputStream(bufferedStream);
 
-            int[][] dictionary = flatTree(tree);
             int read;
             while ((read = inputStream.read(buffer)) != -1) {
                 for (int c = read; c > 0; c--) {
