@@ -95,7 +95,7 @@ public class Encoder {
             int read;
             while ((read = inputStream.read(buffer)) != -1) {
                 for (int c = read; c > 0; c--) {
-                    int b = buffer[read - c] - Byte.MIN_VALUE;
+                    int b = Byte.toUnsignedInt(buffer[read - c]);
                     int[] path = dictionary[b];
                     for (int i = path.length - 1; i >= 0; i--) {
                         bitStream.writeBit(path[i]);
@@ -115,7 +115,7 @@ public class Encoder {
             int read;
             while ((read = inputStream.read(buffer)) != -1) {
                 for (int c = 0; c < read; c++) {
-                    int b = buffer[c] - Byte.MIN_VALUE;
+                    int b = Byte.toUnsignedInt(buffer[c]);
                     bytes[b]++;
                 }
             }
@@ -140,7 +140,6 @@ public class Encoder {
 
         int[][] dictionary = new int[Byte.MAX_VALUE - Byte.MIN_VALUE + 1][];
         for (TreeItem item : leafs) {
-
             int length = 0;
             TreeItem parent = item;
             do {

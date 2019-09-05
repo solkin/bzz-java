@@ -56,7 +56,7 @@ public class Decoder {
                     if (child.hasChild()) {
                         item = child;
                     } else {
-                        outputStream.write(child.getValue() - Byte.MIN_VALUE);
+                        outputStream.write((byte) child.getValue());
                         if (++written == fileSize) {
                             break;
                         }
@@ -76,7 +76,7 @@ public class Decoder {
                 List<TreeItem> leafs = new LinkedList<>();
                 int leafsCount = dataStream.readInt();
                 for (int c = 0; c < leafsCount; c++) {
-                    int value = dataStream.readByte();
+                    int value = Byte.toUnsignedInt(dataStream.readByte());
                     int frequency = dataStream.readInt();
                     leafs.add(new TreeItem(value, frequency));
                 }

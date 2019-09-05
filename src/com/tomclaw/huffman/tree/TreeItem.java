@@ -73,7 +73,11 @@ class TreeItem implements Comparable<TreeItem> {
 
     @Override
     public int compareTo(TreeItem o) {
-        return Integer.compare(o.frequency, frequency);
+        if (o.frequency != frequency) {
+            return Integer.compare(o.frequency, frequency);
+        } else {
+            return Integer.compare(o.value, value);
+        }
     }
 
     @Override
