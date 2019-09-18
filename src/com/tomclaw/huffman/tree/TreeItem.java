@@ -5,12 +5,16 @@ package com.tomclaw.huffman.tree;
  */
 class TreeItem implements Comparable<TreeItem> {
 
-    private final int value; // byte, 0 - 255
-    private final int frequency;
-    private final TreeItem zero;
-    private final TreeItem one;
+    private int value; // byte, 0 - 255
+    private int frequency;
+    private TreeItem zero;
+    private TreeItem one;
     private int bit = 0;
     private TreeItem parent = null;
+
+    public TreeItem() {
+        this(0, 0, null, null);
+    }
 
     public TreeItem(int value, int frequency) {
         this(value, frequency, null, null);
@@ -69,6 +73,22 @@ class TreeItem implements Comparable<TreeItem> {
 
     public int getBit() {
         return bit;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+
+    public void setChild(int bit, TreeItem child) {
+        if (bit == 1) {
+            one = child;
+        } else {
+            zero = child;
+        }
     }
 
     @Override

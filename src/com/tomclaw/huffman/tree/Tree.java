@@ -23,6 +23,10 @@ public class Tree {
         return leafs;
     }
 
+    public static Tree create(TreeItem rootItem) {
+        return new Tree(rootItem, null);
+    }
+
     public static Tree create(Collection<TreeItem> leafs) {
         LinkedList<TreeItem> items = new LinkedList<>(leafs);
         do {

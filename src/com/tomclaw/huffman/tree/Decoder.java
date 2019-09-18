@@ -71,10 +71,10 @@ public class Decoder {
 
     private Tree readDictionary(DataInputStream dataStream) throws IOException {
         int version = dataStream.readShort();
+        int leafsCount = dataStream.readInt();
         switch (version) {
             case VERSION_1:
                 List<TreeItem> leafs = new LinkedList<>();
-                int leafsCount = dataStream.readInt();
                 for (int c = 0; c < leafsCount; c++) {
                     int value = Byte.toUnsignedInt(dataStream.readByte());
                     int frequency = dataStream.readInt();
@@ -82,7 +82,32 @@ public class Decoder {
                 }
                 return Tree.create(leafs);
             case VERSION_2:
-                return null;
+                BitInputStream bitStream = new BitInputStream(dataStream);
+                int[] sizes = new int[256];
+                for (int c = 0; c < leafsCount; c++) {
+                    int value = Byte.toUnsignedInt(dataStream.readByte());
+                    int size = Byte.toUnsignedInt(dataStream.readByte());
+                    sizes[value] = size;
+                }
+                TreeItem root = new TreeItem();
+                TreeItem parent = root;
+                for (int i = 0; i < sizes.length; i++) {
+                    int size = sizes[i];
+                    if (size > 0) {
+                        for (int c = 0; c < size; c++) {
+                            int bit = bitStream.readBit();
+                            TreeItem item = parent.getChild(bit);
+                            if (item == null) {
+                                item = new TreeItem();
+                                parent.setChild(bit, item);
+                            }
+                            parent = item;
+                        }
+                        parent.setValue(i);
+                        parent = root;
+                    }
+                }
+                return Tree.create(root);
             default:
                 throw new UnsupportedEncodingException("Version " + version + " is not supported!");
         }
