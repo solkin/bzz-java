@@ -45,7 +45,7 @@ public class Encoder {
 
     private void writeDictionary(int[][] dictionary, int count, DataOutputStream dataStream) throws IOException {
         dataStream.writeShort(VERSION_2);
-        dataStream.writeByte(count);
+        dataStream.writeInt(count);
         for (int c = 0; c < dictionary.length; c++) {
             if (dictionary[c] != null && dictionary[c].length > 0) {
                 dataStream.writeByte(c);
@@ -59,8 +59,8 @@ public class Encoder {
             bitStream = new BitOutputStream(baos);
             for (int[] path : dictionary) {
                 if (path != null) {
-                    for (int value : path) {
-                        bitStream.writeBit(value);
+                    for (int c = path.length - 1; c >= 0; c--) {
+                        bitStream.writeBit(path[c]);
                     }
                 }
             }
