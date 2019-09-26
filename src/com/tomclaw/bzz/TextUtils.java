@@ -1,4 +1,4 @@
-package com.tomclaw.huffman;
+package com.tomclaw.bzz;
 
 /**
  * Created by solkin on 15/05/16.

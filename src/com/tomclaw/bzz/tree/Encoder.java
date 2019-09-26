@@ -1,11 +1,11 @@
-package com.tomclaw.huffman.tree;
+package com.tomclaw.bzz.tree;
 
-import com.tomclaw.huffman.BitOutputStream;
+import com.tomclaw.bzz.BitOutputStream;
 
 import java.io.*;
 import java.util.*;
 
-import static com.tomclaw.huffman.StreamHelper.closeStream;
+import static com.tomclaw.bzz.StreamHelper.closeStream;
 
 /**
  * Created by ivsolkin on 08.06.17.

@@ -1,4 +1,4 @@
-package com.tomclaw.huffman.tree;
+package com.tomclaw.bzz.tree;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
-package com.tomclaw.huffman;
+package com.tomclaw.bzz;
 
-import com.tomclaw.huffman.tree.Decoder;
+import com.tomclaw.bzz.tree.Decoder;
 
 import java.io.File;
 import java.io.IOException;

@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65363cba-cf13-4793-a6ab-a65eb268fd77" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Decoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Encoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/TreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/TreeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huffman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bzz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/BitInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/BitInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/BitOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/BitOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/FileCompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/FileCompress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/FileExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/FileExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/FilesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/FilesHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/HexHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/HexHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/StreamHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/StreamHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/TextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/TextUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/tree/Decoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/tree/Encoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tomclaw/huffman/tree/TreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tomclaw/bzz/tree/TreeItem.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,21 +37,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>.close();</find>
-      <find>close</find>
-      <find>ArrayList</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="960" />
-    <option name="height" value="1053" />
-  </component>
+  <component name="ProjectId" id="1QvYwRXmezKspB9OmA54QV6iKaA" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -72,11 +73,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Compress">
+  <component name="RunManager" selected="Application.Decompress">
     <configuration name="Compress" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.tomclaw.huffman.Main" />
-      <module name="huffman" />
-      <option name="PROGRAM_PARAMETERS" value="-c $USER_HOME$/Desktop/drawa-android.bag $USER_HOME$/Desktop/drawa-android.hfm" />
+      <option name="MAIN_CLASS_NAME" value="com.tomclaw.bzz.Main" />
+      <module name="bzz" />
+      <option name="PROGRAM_PARAMETERS" value="-c $USER_HOME$/Desktop/apps-list.json $USER_HOME$/Desktop/apps-list(2).bzz" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -84,9 +85,9 @@
       </method>
     </configuration>
     <configuration name="Decompress" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.tomclaw.huffman.Main" />
-      <module name="huffman" />
-      <option name="PROGRAM_PARAMETERS" value="-x $USER_HOME$/Desktop/drawa-android.hfm $USER_HOME$/Desktop/drawa-android-x.bag" />
+      <option name="MAIN_CLASS_NAME" value="com.tomclaw.bzz.Main" />
+      <module name="bzz" />
+      <option name="PROGRAM_PARAMETERS" value="-x $USER_HOME$/Desktop/apps-list(2).bzz $USER_HOME$/Desktop/apps-list(2).json" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,7 +167,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -1,4 +1,4 @@
-package com.tomclaw.huffman.tree;
+package com.tomclaw.bzz.tree;
 
 /**
  * Created by solkin on 08.06.17.

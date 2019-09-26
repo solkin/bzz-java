@@ -1,4 +1,4 @@
-package com.tomclaw.huffman;
+package com.tomclaw.bzz;
 
 import java.io.Closeable;
 import java.io.Flushable;

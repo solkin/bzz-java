@@ -1,4 +1,4 @@
-package com.tomclaw.huffman;
+package com.tomclaw.bzz;
 
 public class Main {
 
