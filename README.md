@@ -1,5 +1,5 @@
-## Huffman Java [![Build Status](https://travis-ci.org/solkin/huffman-java.svg?branch=master)](https://travis-ci.org/solkin/huffman-java)
-Based on huffman algorithm file compressor/decompressor
+## Bzz archiver Java [![Build Status](https://travis-ci.org/solkin/bzz-java.svg?branch=master)](https://travis-ci.org/solkin/bzz-java)
+Based on Huffman tree file compressor/decompressor
 
 ### Command line options
 `-c <source> <archive>` - compress file `source` to file `archive`.
