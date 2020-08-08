@@ -8,7 +8,8 @@ import java.io.InputStream;
  * Created by ivsolkin on 08.06.17.
  */
 public class BitInputStream implements Closeable {
-    private InputStream input;
+
+    private final InputStream input;
     private int digits;
     private int numDigits;
     private boolean isFirstByteRead;
@@ -47,7 +48,4 @@ public class BitInputStream implements Closeable {
         input.close();
     }
 
-    protected void finalize() throws IOException {
-        close();
-    }
 }

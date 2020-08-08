@@ -9,7 +9,8 @@ import java.io.OutputStream;
  * Created by ivsolkin on 08.06.17.
  */
 public class BitOutputStream implements Closeable, Flushable {
-    private OutputStream output;
+
+    private final OutputStream output;
     private int digits;
     private int numDigits;
 
@@ -51,7 +52,4 @@ public class BitOutputStream implements Closeable, Flushable {
         output.close();
     }
 
-    protected void finalize() throws IOException {
-        close();
-    }
 }
