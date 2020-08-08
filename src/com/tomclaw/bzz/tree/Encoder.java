@@ -19,7 +19,7 @@ public class Encoder {
     private final File outputFile;
 
     private static final int BUFFER_SIZE = 10 * 1024;
-    private byte[] buffer = new byte[BUFFER_SIZE];
+    private final byte[] buffer = new byte[BUFFER_SIZE];
 
     public Encoder(File inputFile, File outputFile) {
         this.inputFile = inputFile;
