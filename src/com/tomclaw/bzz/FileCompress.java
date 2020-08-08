@@ -10,15 +10,15 @@ import java.io.IOException;
  */
 public class FileCompress {
 
-    public void start(String inputPath, String outputPath) throws Throwable {
+    public void start(String inputPath, String outputPath) {
         File input = new File(inputPath);
         File output = new File(outputPath);
         long time = System.currentTimeMillis();
         compressVersionOne(input, output);
         time = System.currentTimeMillis() - time;
         int compression = (int) (100L * output.length() / input.length());
-        float speed = (1000 * input.length() / time) / 1024F;
-        System.out.println(String.format("%d ms, %.2f KiB/sec, %d%%", time, speed, compression));
+        float speed = (1000F * input.length() / time) / 1024F;
+        System.out.printf("%d ms, %.2f KiB/sec, %d%%\n", time, speed, compression);
     }
 
     private void compressVersionOne(File input, File output) {
